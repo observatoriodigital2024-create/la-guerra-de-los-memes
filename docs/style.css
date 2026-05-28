@@ -1,0 +1,531 @@
+:root {
+  --fondo: #0f172a;
+  --texto: #e2e8f0;
+  --muted: #94a3b8;
+  --linea: #334155;
+  --panel: rgba(15, 23, 42, 0.9);
+  --cian: #1b75bb;
+  --morado: #652d90;
+  --azul: #1b75bb;
+  --rosa: #ec4899;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: "Montserrat", Montserrat, semibold;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.portada {
+  min-height: 92vh;
+  position: relative;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  padding: 5rem max(1.25rem, 8vw);
+  background: linear-gradient(180deg, #0f172a 0%, #111827 35%, #0a0e27 70%, #1b75bb 100%);
+  box-shadow: inset 0 -14rem 28rem rgba(27, 117, 187, 0.12);
+  color: #fff;
+}
+
+.portada-fondo {
+  position: absolute;
+  inset: 0;
+  opacity: 0.9;
+}
+
+.capa {
+  position: absolute;
+  inset-inline: -8vw;
+  bottom: 0;
+  height: 54vh;
+  background: linear-gradient(135deg, transparent 28%, currentColor 29% 70%, transparent 71%);
+  transform: translateY(var(--movimiento, 0));
+}
+
+.capa-1 {
+  color: #1c1855;
+  --movimiento: 0;
+}
+
+.capa-2 {
+  color: #6d28d9;
+  bottom: -8vh;
+  height: 62vh;
+  --movimiento: 4vh;
+}
+
+.capa-3 {
+  color:  #1b75bb;
+  bottom: -16vh;
+  height: 68vh;
+  --movimiento: 8vh;
+}
+
+.portada-texto {
+  position: relative;
+  max-width: 980px;
+  z-index: 1;
+}
+
+.logo {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.logo img {
+  width: 140px;
+  height: auto;
+  display: block;
+}
+
+.logo-svg {
+  width: 140px;
+  height: auto;
+  display: block;
+}
+
+.logo-mark { fill: var(--morado); }
+.logo-symbol { fill: #fff; }
+.logo-text { fill: var(--texto); }
+
+@media (max-width: 640px) {
+  .logo img, .logo-svg { width: 110px; }
+}
+
+/* Legend for charts */
+.chart-legend {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+  color: var(--texto);
+  font-size: 13px;
+}
+.chart-legend .legend-item {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+.chart-legend .legend-item i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.etiqueta,
+.meta {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.portada .etiqueta,
+.portada .meta {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+h1 {
+  max-width: 980px;
+  margin-top: 1rem;
+  font-family: Montserrat, "Montserrat", semibold;
+  font-size: clamp(3.25rem, 8vw, 7.6rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.bajada {
+  max-width: 720px;
+  margin-top: 1.5rem;
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+}
+
+.meta {
+  margin-top: 2rem;
+}
+
+.intro,
+.cierre {
+  width: min(780px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: 5rem 0;
+}
+
+.intro p + p,
+.cierre p + p {
+  margin-top: 1.2rem;
+}
+
+.lead {
+  font-size: clamp(1.35rem, 2.8vw, 2.1rem);
+  line-height: 1.35;
+  color: var(--cian);
+}
+
+.relato {
+  width: min(1180px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(280px, 0.72fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+.escena {
+  position: sticky;
+  top: 1rem;
+  min-height: calc(100vh - 2rem);
+  display: grid;
+  align-items: center;
+}
+
+.progreso {
+  position: absolute;
+  top: 1.25rem;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.progreso span {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--cian), var(--morado), var(--rosa));
+  transition: width 0.2s ease;
+}
+
+.lienzo {
+  min-height: 680px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(59, 130, 246, 0.24);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0f172a 0%, #1a1f35 50%, #0a0e27 100%);
+  color: #f8fafc;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.64), inset 0 1px 0 rgba(59, 130, 246, 0.08);
+  transition: background 0.6s ease;
+}
+
+.rotulo {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  width: min(360px, calc(100% - 2.5rem));
+  padding: 1rem;
+  border: 1px solid rgba(59, 130, 246, 0.24);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.rotulo p {
+  color: var(--cian);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.rotulo strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: Montserrat, "Montserrat", semibold;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.pasos {
+  padding: 18vh 0 25vh;
+}
+
+.paso {
+  min-height: 82vh;
+  display: grid;
+  align-content: center;
+  opacity: 0.42;
+  transition: opacity 0.35s ease;
+}
+
+.paso.activo {
+  opacity: 1;
+}
+
+.paso + .paso {
+  border-top: 1px solid var(--linea);
+}
+
+.paso h2,
+.cierre h2 {
+  margin-top: 0.75rem;
+  font-family: Montserrat, "Montserrat", semibold;
+  font-size: clamp(2.1rem, 4vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: 0;
+  background: linear-gradient(135deg, var(--cian), var(--morado));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.paso p:not(.etiqueta),
+.cierre p:not(.etiqueta) {
+  margin-top: 1.1rem;
+  font-size: 1.08rem;
+  color: #cbd5e1;
+}
+
+@media (max-width: 860px) {
+  .portada {
+    min-height: 82vh;
+  }
+
+  .relato {
+    width: 100%;
+    display: block;
+  }
+
+  .escena {
+    top: 0;
+    min-height: 62vh;
+    z-index: 1;
+  }
+
+  .lienzo {
+    min-height: 62vh;
+    border-radius: 0;
+    border-inline: 0;
+  }
+
+  .pasos {
+    width: min(720px, calc(100% - 2.5rem));
+    margin: 0 auto;
+    padding-top: 2rem;
+  }
+
+  .paso {
+    min-height: 70vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+#observableChart {
+  width: 100%;
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+  background: none !important;
+}
+
+/* Estilos para D3 */
+#d3-network {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.network-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.network-link {
+  stroke: rgba(59, 130, 246, 0.3);
+  stroke-width: 1.5px;
+}
+
+.network-node {
+  cursor: pointer;
+}
+
+.network-node circle {
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 2px;
+}
+
+.network-label {
+  font-size: 12px;
+  fill: #cbd5e1;
+  pointer-events: none;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* Segunda sección - Scrollytelling Secundario */
+
+.intro-capitulo {
+  width: min(780px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: 8rem 0 3rem;
+  border-top: 2px solid rgba(59, 130, 246, 0.24);
+}
+
+.intro-capitulo .etiqueta {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid var(--cian);
+  border-radius: 4px;
+  color: var(--cian);
+  margin-bottom: 1.5rem;
+}
+
+.intro-capitulo h2 {
+  font-family: Montserrat, "Montserrat", semibold;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin-top: 0;
+  background: linear-gradient(135deg, var(--cian), var(--morado));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bajada-capitulo {
+  max-width: 720px;
+  margin-top: 1.5rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+.relato-secundario {
+  width: min(1180px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(280px, 0.72fr);
+  gap: 3rem;
+  align-items: start;
+  padding: 4rem 0;
+}
+
+.escena-secundaria {
+  position: sticky;
+  top: 1rem;
+  min-height: calc(100vh - 2rem);
+  display: grid;
+  align-items: center;
+}
+
+#lienzo-2 {
+  min-height: 680px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(59, 130, 246, 0.24);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0f172a 0%, #1a1f35 50%, #0a0e27 100%);
+  color: #f8fafc;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.64), inset 0 1px 0 rgba(59, 130, 246, 0.08);
+  transition: background 0.6s ease;
+}
+
+#observableChart2 {
+  width: 100%;
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+  background: none !important;
+}
+
+.pasos-secundarios {
+  padding: 18vh 0 25vh;
+}
+
+.paso-secundario {
+  min-height: 82vh;
+  display: grid;
+  align-content: center;
+  opacity: 0.42;
+  transition: opacity 0.35s ease;
+}
+
+.paso-secundario.activo {
+  opacity: 1;
+}
+
+.paso-secundario + .paso-secundario {
+  border-top: 1px solid var(--linea);
+}
+
+.paso-secundario h2 {
+  margin-top: 0.75rem;
+  font-family: Montserrat, "Montserrat", semibold;
+  font-size: clamp(2.1rem, 4vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: 0;
+  background: linear-gradient(135deg, var(--rosa), var(--cian));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.paso-secundario p:not(.etiqueta) {
+  margin-top: 1.1rem;
+  font-size: 1.08rem;
+  color: #cbd5e1;
+}
+
+@media (max-width: 860px) {
+  .relato-secundario {
+    width: 100%;
+    display: block;
+  }
+
+  .escena-secundaria {
+    top: 0;
+    min-height: 62vh;
+    z-index: 1;
+  }
+
+  #lienzo-2 {
+    min-height: 62vh;
+    border-radius: 0;
+    border-inline: 0;
+  }
+
+  .pasos-secundarios {
+    width: min(720px, calc(100% - 2.5rem));
+    margin: 0 auto;
+    padding-top: 2rem;
+  }
+
+  .paso-secundario {
+    min-height: 70vh;
+  }
+}

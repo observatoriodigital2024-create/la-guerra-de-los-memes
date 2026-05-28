@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="fTitle">
+  <title id="fTitle">Observatorio</title>
+  <rect width="64" height="64" rx="8" fill="#652d90" />
+  <circle cx="30" cy="30" r="10" fill="#ffffff" opacity="0.95" />
+</svg>
