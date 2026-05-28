@@ -1,13 +1,13 @@
 :root {
-  --fondo: #0f172a;
-  --texto: #e2e8f0;
-  --muted: #94a3b8;
-  --linea: #334155;
-  --panel: rgba(15, 23, 42, 0.9);
-  --cian: #1b75bb;
-  --morado: #652d90;
-  --azul: #1b75bb;
-  --rosa: #ec4899;
+  --fondo: #050505;
+  --fondo-suave: #101010;
+  --texto: #f4f4f4;
+  --texto-secundario: #c9c9c9;
+  --acento: #d84b2a;
+  --acento-suave: #f0b36a;
+  --tarjeta: rgba(255, 255, 255, 0.08);
+  --borde: rgba(255, 255, 255, 0.16);
+  --sombra: 0 24px 70px rgba(0, 0, 0, 0.45);
 }
 
 * {
@@ -22,510 +22,451 @@ body {
   margin: 0;
   background: var(--fondo);
   color: var(--texto);
-  font-family: "Montserrat", Montserrat, semibold;
-  font-weight: 600;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  align-items: end;
+  padding: 8vw;
+  background-image: url("assets/img/slopaganda/red-button-lego.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.86) 0%,
+      rgba(0, 0, 0, 0.55) 42%,
+      rgba(0, 0, 0, 0.18) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.88) 0%,
+      rgba(0, 0, 0, 0.05) 60%
+    );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+}
+
+.kicker {
+  margin: 0 0 18px;
+  color: var(--acento-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.hero h1 {
+  margin: 0 0 24px;
+  max-width: 980px;
+  font-size: clamp(3.4rem, 8vw, 8.6rem);
+  line-height: 0.88;
+  letter-spacing: -0.07em;
+}
+
+.hero p:last-child {
+  max-width: 720px;
+  margin: 0;
+  color: var(--texto-secundario);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
   line-height: 1.55;
 }
 
-h1,
-h2,
-p {
-  margin: 0;
+.intro {
+  padding: 120px 6vw;
+  background: var(--fondo);
 }
 
-.portada {
-  min-height: 92vh;
-  position: relative;
-  display: grid;
-  align-items: end;
-  overflow: hidden;
-  padding: 5rem max(1.25rem, 8vw);
-  background: linear-gradient(180deg, #0f172a 0%, #111827 35%, #0a0e27 70%, #1b75bb 100%);
-  box-shadow: inset 0 -14rem 28rem rgba(27, 117, 187, 0.12);
-  color: #fff;
-}
-
-.portada-fondo {
-  position: absolute;
-  inset: 0;
-  opacity: 0.9;
-}
-
-.capa {
-  position: absolute;
-  inset-inline: -8vw;
-  bottom: 0;
-  height: 54vh;
-  background: linear-gradient(135deg, transparent 28%, currentColor 29% 70%, transparent 71%);
-  transform: translateY(var(--movimiento, 0));
-}
-
-.capa-1 {
-  color: #1c1855;
-  --movimiento: 0;
-}
-
-.capa-2 {
-  color: #6d28d9;
-  bottom: -8vh;
-  height: 62vh;
-  --movimiento: 4vh;
-}
-
-.capa-3 {
-  color:  #1b75bb;
-  bottom: -16vh;
-  height: 68vh;
-  --movimiento: 8vh;
-}
-
-.portada-texto {
-  position: relative;
+.intro__inner {
   max-width: 980px;
-  z-index: 1;
-}
-
-.logo {
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.logo img {
-  width: 140px;
-  height: auto;
-  display: block;
-}
-
-.logo-svg {
-  width: 140px;
-  height: auto;
-  display: block;
-}
-
-.logo-mark { fill: var(--morado); }
-.logo-symbol { fill: #fff; }
-.logo-text { fill: var(--texto); }
-
-@media (max-width: 640px) {
-  .logo img, .logo-svg { width: 110px; }
-}
-
-/* Legend for charts */
-.chart-legend {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-bottom: 8px;
-  color: var(--texto);
-  font-size: 13px;
-}
-.chart-legend .legend-item {
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
-}
-.chart-legend .legend-item i {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 2px;
-}
-
-.etiqueta,
-.meta {
-  color: var(--muted);
-  font-size: 0.84rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.portada .etiqueta,
-.portada .meta {
-  color: rgba(255, 255, 255, 0.72);
-}
-
-h1 {
-  max-width: 980px;
-  margin-top: 1rem;
-  font-family: Montserrat, "Montserrat", semibold;
-  font-size: clamp(3.25rem, 8vw, 7.6rem);
-  line-height: 0.95;
-  letter-spacing: 0;
-}
-
-.bajada {
-  max-width: 720px;
-  margin-top: 1.5rem;
-  font-size: clamp(1.15rem, 2vw, 1.65rem);
-}
-
-.meta {
-  margin-top: 2rem;
-}
-
-.intro,
-.cierre {
-  width: min(780px, calc(100% - 2.5rem));
   margin: 0 auto;
-  padding: 5rem 0;
 }
 
-.intro p + p,
-.cierre p + p {
-  margin-top: 1.2rem;
+.intro h2,
+.section-heading h2,
+.cierre h2 {
+  margin: 0 0 22px;
+  font-size: clamp(2.4rem, 5vw, 5.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
 }
 
-.lead {
-  font-size: clamp(1.35rem, 2.8vw, 2.1rem);
-  line-height: 1.35;
-  color: var(--cian);
+.intro p:last-child,
+.section-heading p,
+.cierre p {
+  max-width: 860px;
+  color: var(--texto-secundario);
+  font-size: clamp(1.05rem, 1.7vw, 1.32rem);
+  line-height: 1.7;
 }
 
 .relato {
-  width: min(1180px, calc(100% - 2.5rem));
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(360px, 1fr) minmax(280px, 0.72fr);
-  gap: 3rem;
-  align-items: start;
+  position: relative;
+  background: var(--fondo);
+  color: var(--texto);
 }
 
 .escena {
   position: sticky;
-  top: 1rem;
-  min-height: calc(100vh - 2rem);
-  display: grid;
-  align-items: center;
-}
-
-.progreso {
-  position: absolute;
-  top: 1.25rem;
-  left: 0;
-  width: 100%;
-  height: 4px;
+  top: 0;
+  height: 100vh;
   overflow: hidden;
-  background: rgba(148, 163, 184, 0.12);
-}
-
-.progreso span {
-  display: block;
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--cian), var(--morado), var(--rosa));
-  transition: width 0.2s ease;
+  z-index: 1;
 }
 
 .lienzo {
-  min-height: 680px;
   position: relative;
+  width: 100%;
+  height: 100vh;
   overflow: hidden;
-  border: 1px solid rgba(59, 130, 246, 0.24);
-  border-radius: 8px;
-  background: linear-gradient(135deg, #0f172a 0%, #1a1f35 50%, #0a0e27 100%);
-  color: #f8fafc;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.64), inset 0 1px 0 rgba(59, 130, 246, 0.08);
-  transition: background 0.6s ease;
+  background: var(--fondo);
+}
+
+.imagen-relato {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.78;
+  z-index: 1;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.imagen-relato.cambiando {
+  opacity: 0;
+  transform: scale(1.035);
+}
+
+.lienzo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.84) 0%,
+      rgba(0, 0, 0, 0.48) 40%,
+      rgba(0, 0, 0, 0.16) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.05) 55%
+    );
 }
 
 .rotulo {
   position: absolute;
-  left: 1.25rem;
-  bottom: 1.25rem;
-  width: min(360px, calc(100% - 2.5rem));
-  padding: 1rem;
-  border: 1px solid rgba(59, 130, 246, 0.24);
-  border-radius: 8px;
-  background: rgba(15, 23, 42, 0.92);
+  left: 48px;
+  bottom: 48px;
+  z-index: 4;
+  max-width: 480px;
+  padding: 18px 22px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.68);
+  color: #fff;
+  border: 1px solid var(--borde);
   backdrop-filter: blur(10px);
+  box-shadow: var(--sombra);
 }
 
 .rotulo p {
-  color: var(--cian);
-  font-size: 0.82rem;
+  margin: 0 0 7px;
+  color: var(--acento-suave);
+  font-size: 0.8rem;
   font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .rotulo strong {
   display: block;
-  margin-top: 0.35rem;
-  font-family: Montserrat, "Montserrat", semibold;
-  font-size: 1.5rem;
+  font-size: clamp(1.3rem, 2.2vw, 2.2rem);
   line-height: 1.1;
-  color: #fff;
 }
 
-.pasos {
-  padding: 18vh 0 25vh;
+.progreso {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 6;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+#barra-progreso {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: var(--acento);
+  transition: width 0.1s linear;
+}
+
+.pasos-relato {
+  position: relative;
+  z-index: 5;
+  width: min(560px, 44vw);
+  padding: 10vh 0 55vh 6vw;
 }
 
 .paso {
-  min-height: 82vh;
-  display: grid;
-  align-content: center;
-  opacity: 0.42;
-  transition: opacity 0.35s ease;
-}
-
-.paso.activo {
-  opacity: 1;
-}
-
-.paso + .paso {
-  border-top: 1px solid var(--linea);
-}
-
-.paso h2,
-.cierre h2 {
-  margin-top: 0.75rem;
-  font-family: Montserrat, "Montserrat", semibold;
-  font-size: clamp(2.1rem, 4vw, 4.2rem);
-  line-height: 1;
-  letter-spacing: 0;
-  background: linear-gradient(135deg, var(--cian), var(--morado));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.paso p:not(.etiqueta),
-.cierre p:not(.etiqueta) {
-  margin-top: 1.1rem;
-  font-size: 1.08rem;
-  color: #cbd5e1;
-}
-
-@media (max-width: 860px) {
-  .portada {
-    min-height: 82vh;
-  }
-
-  .relato {
-    width: 100%;
-    display: block;
-  }
-
-  .escena {
-    top: 0;
-    min-height: 62vh;
-    z-index: 1;
-  }
-
-  .lienzo {
-    min-height: 62vh;
-    border-radius: 0;
-    border-inline: 0;
-  }
-
-  .pasos {
-    width: min(720px, calc(100% - 2.5rem));
-    margin: 0 auto;
-    padding-top: 2rem;
-  }
-
-  .paso {
-    min-height: 70vh;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
-}
-
-#observableChart {
-  width: 100%;
-  min-height: 430px;
-  display: grid;
-  place-items: center;
-  background: none !important;
-}
-
-/* Estilos para D3 */
-#d3-network {
-  width: 100%;
-  height: 100%;
+  min-height: 88vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
 }
 
-.network-svg {
-  width: 100%;
-  height: 100%;
-}
-
-.network-link {
-  stroke: rgba(59, 130, 246, 0.3);
-  stroke-width: 1.5px;
-}
-
-.network-node {
-  cursor: pointer;
-}
-
-.network-node circle {
-  stroke: rgba(255, 255, 255, 0.2);
-  stroke-width: 2px;
-}
-
-.network-label {
-  font-size: 12px;
-  fill: #cbd5e1;
-  pointer-events: none;
-  text-anchor: middle;
-  dominant-baseline: middle;
-}
-
-/* Segunda sección - Scrollytelling Secundario */
-
-.intro-capitulo {
-  width: min(780px, calc(100% - 2.5rem));
-  margin: 0 auto;
-  padding: 8rem 0 3rem;
-  border-top: 2px solid rgba(59, 130, 246, 0.24);
-}
-
-.intro-capitulo .etiqueta {
+.paso span {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background: rgba(6, 182, 212, 0.1);
-  border: 1px solid var(--cian);
-  border-radius: 4px;
-  color: var(--cian);
-  margin-bottom: 1.5rem;
+  margin-bottom: 18px;
+  color: var(--acento-suave);
+  font-size: 0.88rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
 }
 
-.intro-capitulo h2 {
-  font-family: Montserrat, "Montserrat", semibold;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.1;
-  margin-top: 0;
-  background: linear-gradient(135deg, var(--cian), var(--morado));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.paso h2 {
+  margin: 0 0 20px;
+  font-size: clamp(2.4rem, 4.8vw, 5.7rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
 }
 
-.bajada-capitulo {
-  max-width: 720px;
-  margin-top: 1.5rem;
-  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
-  color: #cbd5e1;
-  line-height: 1.4;
+.paso p {
+  margin: 0;
+  max-width: 520px;
+  color: #e3e3e3;
+  font-size: clamp(1rem, 1.55vw, 1.25rem);
+  line-height: 1.68;
 }
 
-.relato-secundario {
-  width: min(1180px, calc(100% - 2.5rem));
+.matriz,
+.timeline-section,
+.cierre {
+  padding: 120px 6vw;
+  background: var(--fondo-suave);
+}
+
+.timeline-section {
+  background: var(--fondo);
+}
+
+.section-heading {
+  max-width: 980px;
+  margin: 0 auto 60px;
+}
+
+.cards-grid {
+  max-width: 1180px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(360px, 1fr) minmax(280px, 0.72fr);
-  gap: 3rem;
-  align-items: start;
-  padding: 4rem 0;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 26px;
 }
 
-.escena-secundaria {
-  position: sticky;
-  top: 1rem;
-  min-height: calc(100vh - 2rem);
-  display: grid;
-  align-items: center;
-}
-
-#lienzo-2 {
-  min-height: 680px;
-  position: relative;
+.meme-card {
   overflow: hidden;
-  border: 1px solid rgba(59, 130, 246, 0.24);
-  border-radius: 8px;
-  background: linear-gradient(135deg, #0f172a 0%, #1a1f35 50%, #0a0e27 100%);
-  color: #f8fafc;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.64), inset 0 1px 0 rgba(59, 130, 246, 0.08);
-  transition: background 0.6s ease;
+  border: 1px solid var(--borde);
+  border-radius: 28px;
+  background: var(--tarjeta);
+  box-shadow: var(--sombra);
 }
 
-#observableChart2 {
+.meme-card img {
   width: 100%;
-  min-height: 430px;
+  height: 280px;
+  object-fit: cover;
+}
+
+.meme-card div {
+  padding: 26px;
+}
+
+.meme-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.45rem;
+  line-height: 1.15;
+}
+
+.meme-card p {
+  margin: 0 0 18px;
+  color: var(--texto-secundario);
+  line-height: 1.6;
+}
+
+.meme-card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.meme-card li {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(216, 75, 42, 0.18);
+  color: #ffc7b8;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.timeline {
+  max-width: 980px;
+  margin: 0 auto;
+  position: relative;
+  border-left: 2px solid var(--borde);
+  padding-left: 38px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 56px;
+  padding: 28px;
+  border: 1px solid var(--borde);
+  border-radius: 24px;
+  background: var(--tarjeta);
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -48px;
+  top: 34px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--acento);
+  box-shadow: 0 0 0 8px rgba(216, 75, 42, 0.18);
+}
+
+.timeline-item span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--acento-suave);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.timeline-item h3 {
+  margin: 0 0 12px;
+  font-size: 1.7rem;
+}
+
+.timeline-item p {
+  margin: 0;
+  color: var(--texto-secundario);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.cierre {
+  min-height: 80vh;
   display: grid;
   place-items: center;
-  background: none !important;
+  background:
+    linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.92)),
+    url("assets/img/slopaganda/battle-lego.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
-.pasos-secundarios {
-  padding: 18vh 0 25vh;
+.cierre__inner {
+  max-width: 980px;
 }
 
-.paso-secundario {
-  min-height: 82vh;
-  display: grid;
-  align-content: center;
-  opacity: 0.42;
-  transition: opacity 0.35s ease;
+.nota {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--borde);
+  font-size: 0.98rem !important;
+  color: #b7b7b7 !important;
 }
 
-.paso-secundario.activo {
-  opacity: 1;
-}
-
-.paso-secundario + .paso-secundario {
-  border-top: 1px solid var(--linea);
-}
-
-.paso-secundario h2 {
-  margin-top: 0.75rem;
-  font-family: Montserrat, "Montserrat", semibold;
-  font-size: clamp(2.1rem, 4vw, 4.2rem);
-  line-height: 1;
-  letter-spacing: 0;
-  background: linear-gradient(135deg, var(--rosa), var(--cian));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.paso-secundario p:not(.etiqueta) {
-  margin-top: 1.1rem;
-  font-size: 1.08rem;
-  color: #cbd5e1;
-}
-
-@media (max-width: 860px) {
-  .relato-secundario {
-    width: 100%;
-    display: block;
+@media (max-width: 900px) {
+  .hero {
+    padding: 28px;
   }
 
-  .escena-secundaria {
-    top: 0;
-    min-height: 62vh;
-    z-index: 1;
+  .hero h1 {
+    font-size: clamp(3rem, 16vw, 5.2rem);
   }
 
-  #lienzo-2 {
-    min-height: 62vh;
-    border-radius: 0;
-    border-inline: 0;
+  .intro,
+  .matriz,
+  .timeline-section,
+  .cierre {
+    padding: 80px 24px;
   }
 
-  .pasos-secundarios {
-    width: min(720px, calc(100% - 2.5rem));
-    margin: 0 auto;
-    padding-top: 2rem;
+  .pasos-relato {
+    width: auto;
+    padding: 12vh 24px 45vh;
   }
 
-  .paso-secundario {
-    min-height: 70vh;
+  .paso {
+    min-height: 82vh;
+  }
+
+  .rotulo {
+    left: 22px;
+    right: 22px;
+    bottom: 24px;
+  }
+
+  .imagen-relato {
+    opacity: 0.58;
+  }
+
+  .lienzo::after {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.92) 0%,
+        rgba(0, 0, 0, 0.56) 55%,
+        rgba(0, 0, 0, 0.28) 100%
+      );
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .meme-card img {
+    height: 230px;
+  }
+
+  .timeline {
+    padding-left: 26px;
+  }
+
+  .timeline-item::before {
+    left: -36px;
   }
 }
